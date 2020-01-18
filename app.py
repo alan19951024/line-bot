@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage,ButtonsTemplate
 )
 
 app = Flask(__name__)
@@ -91,7 +91,7 @@ def handle_message(event):
     if '按鈕' in msg:
         buttons_template_message = TemplateSendMessage(
         alt_text='Buttons template',
-        emplate=ButtonsTemplate(
+        template=ButtonsTemplate(
             thumbnail_image_url='https://i.imgur.com/08O1jth.jpg',
             title='選單',
             text='這個是buttons',
