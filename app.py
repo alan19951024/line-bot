@@ -88,34 +88,34 @@ def handle_message(event):
         location_message2)
         return
 
-    # if '按鈕' in msg:
-    #     buttons_template_message = TemplateSendMessage(
-    #         alt_text='Buttons template',
-    #         template=ButtonsTemplate(
-    #             thumbnail_image_url='https://i.imgur.com/08O1jth.jpg',
-    #             title='選單',
-    #             text='這個是buttons',
-    #             actions=[
-    #                 PostbackAction(
-    #                     label='測試按鈕',
-    #                     display_text='測試 text',
-    #                     data='action=buy&itemid=1'
-    #                 ),
-    #                 MessageAction(
-    #                     label='message',
-    #                     text='message text'
-    #                 ),
-    #                 URIAction(
-    #                     label='我的fb',
-    #                     uri='https://www.facebook.com/home.php'
-    #                 )
-    #             ]
-    #         )
-    #     )
-    #         line_bot_api.reply_message(
-    #         event.reply_token,
-    #         buttons_template_message)
-    #         return
+    if '按鈕' in msg:
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://i.imgur.com/08O1jth.jpg',
+                title='選單',
+                text='這個是buttons',
+                actions=[
+                    PostbackAction(
+                        label='測試按鈕',
+                        display_text='測試 text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageAction(
+                        label='message',
+                        text='message text'
+                    ),
+                    URIAction(
+                        label='我的fb',
+                        uri='https://www.facebook.com/home.php'
+                    )
+                ]
+            )
+        )
+            line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+            return
 
     if msg in ['hi','哈瞜','HI','哈囉']:
         r = 'hi'
