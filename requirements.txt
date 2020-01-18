@@ -1,2 +1,2 @@
-line-bot-stk==1.15.0
+line-bot-sdk==1.15.0
 gunicorn

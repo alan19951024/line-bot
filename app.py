@@ -1,4 +1,3 @@
-#web app 首要檔案常取名:app.py
 from flask import Flask, request, abort
 
 from linebot import (
