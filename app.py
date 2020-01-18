@@ -96,16 +96,16 @@ def handle_message(event):
             title='選單',
             text='這個是buttons',
             actions=[
-                PostbackAction(
+                PostbackTemplateAction(
                     label='測試按鈕',
                     display_text='測試 text',
                     data='action=buy&itemid=1'
                 ),
-                MessageAction(
+                MessageTemplateAction(
                     label='message',
                     text='message text'
                 ),
-                URIAction(
+                URITemplateAction(
                     label='我的fb',
                     uri='https://www.facebook.com/home.php'
                 )
