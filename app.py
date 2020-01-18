@@ -112,10 +112,11 @@ def handle_message(event):
                 ]
             )
         )
-            line_bot_api.reply_message(
-            event.reply_token,
-            buttons_template_message)
-            return
+        line_bot_api.reply_message(
+        event.reply_token,
+        buttons_template_message)
+        return
+            
 
     if msg in ['hi','哈瞜','HI','哈囉']:
         r = 'hi'
