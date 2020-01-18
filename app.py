@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage
 )
 
 app = Flask(__name__)
@@ -38,19 +38,18 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '我看不懂你說啥'
+    r = '我看不懂你說什麼'
 
-    if '給我貼圖' in msg:
-        sticker_message = StickerSendMessage(
-            package_id='1',
-            sticker_id='1'
-        )
+    # if '給我貼圖' in msg:
+    #     sticker_message = StickerSendMessage(
+    #         package_id='1',
+    #         sticker_id='1'
+    #     )
 
-        line_bot_api.reply_message(
-        event.reply_token,
-        sticker_message)
-        return
-
+    #     line_bot_api.reply_message(
+    #     event.reply_token,
+    #     sticker_message)
+    #     return
     if msg in ['hi','哈瞜','HI','哈囉']:
         r = 'hi'
     elif msg == '吃了嗎':
@@ -60,6 +59,13 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=r))
+    if msg in ['早餐','早午餐']:
+        message = ImageSendMessage(
+            original_content_url='https://i.imgur.com/JouT00p.jpg',
+            preview_image_url='https://i.imgur.com/JouT00p.jpg'
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+        return
 
 
 if __name__ == "__main__":
