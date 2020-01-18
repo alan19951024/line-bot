@@ -60,12 +60,14 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=r))
     if '早餐' in msg:
-        message = ImageSendMessage(
+        image_message = ImageSendMessage(
             original_content_url='https://i.imgur.com/JouT00p.jpg',
             preview_image_url='https://i.imgur.com/JouT00p.jpg'
         )
-        
-        line_bot_api.reply_message(event.reply_token, message)
+
+        line_bot_api.reply_message(
+        event.reply_token,
+        image_message)
         return
 
 
