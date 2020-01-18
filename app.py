@@ -38,7 +38,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '我看不懂你說什麼'
+    r = '目前只懂這些,請輸入:(早餐,桃園家裡位置,柔柔家裡位置,按鈕,給我貼圖)'
 
     if '給我貼圖' in msg:
         sticker_message = StickerSendMessage(
@@ -118,12 +118,12 @@ def handle_message(event):
         return
             
 
-    if msg in ['hi','哈瞜','HI','哈囉']:
+    if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
-    elif msg == '吃了嗎':
-        r = '還沒'
-    elif '訂位' in msg:
-        r = '您想訂位,幾位?'
+    elif msg == '功能':
+        r = '請輸入:早餐,桃園家裡位置,柔柔家裡位置,按鈕,給我貼圖'
+    elif msg == '北鼻'
+        r = '加油'
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=r))
