@@ -59,11 +59,12 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=r))
-    if msg in ['早餐','早午餐']:
+    if '早餐' in msg:
         message = ImageSendMessage(
             original_content_url='https://i.imgur.com/JouT00p.jpg',
             preview_image_url='https://i.imgur.com/JouT00p.jpg'
         )
+        
         line_bot_api.reply_message(event.reply_token, message)
         return
 
