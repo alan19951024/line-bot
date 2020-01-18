@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage
 )
 
 app = Flask(__name__)
@@ -62,7 +62,7 @@ def handle_message(event):
         image_message)
         return
 #傳位置
-    if '家裡位置' in msg:
+    if '桃園家裡位置' in msg:
         location_message = LocationSendMessage(
         title='桃園家裡住址',
         address='桃園家',
@@ -73,7 +73,50 @@ def handle_message(event):
         line_bot_api.reply_message(
         event.reply_token,
         location_message)
+    if '柔柔家裡位置' in msg:
+        location_message2 = LocationSendMessage(
+        title='柔柔家裡位置',
+        address='柔柔家',
+        latitude=25.003485,
+        longitude=121.514675
+        )
+
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message2)
+
         return
+
+
+
+    if '按鈕' in msg:
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://i.imgur.com/08O1jth.jpg',
+                title='選單',
+                text='這個是buttons',
+                actions=[
+                    PostbackAction(
+                        label='測試按鈕',
+                        display_text='測試 text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageAction(
+                        label='message',
+                        text='message text'
+                    ),
+                    URIAction(
+                        label='我的fb',
+                        uri='https://www.facebook.com/home.php'
+                    )
+                ]
+            )
+        )
+            line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+            return
 
     if msg in ['hi','哈瞜','HI','哈囉']:
         r = 'hi'
