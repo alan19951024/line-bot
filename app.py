@@ -97,8 +97,8 @@ def handle_message(event):
             text='這個是buttons',
             actions=[
                 PostbackTemplateAction(
-                    label='柔柔家裡位置1',
-                    display_text='柔柔家裡位置2',
+                    label='桃園家裡位置',
+                    display_text='桃園家裡位置',
                     data='postback1'
                 ),
                 MessageTemplateAction(
@@ -106,8 +106,8 @@ def handle_message(event):
                     text='柔柔家裡位置'
                 ),
                 URITemplateAction(
-                    label='我的fb',
-                    uri='https://www.facebook.com/home.php'
+                    label='line機器人文章',
+                    uri='https://ithelp.ithome.com.tw/articles/10195640?sc=iThomeR'
                 )
             ]
         )
