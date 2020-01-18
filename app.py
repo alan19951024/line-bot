@@ -97,8 +97,8 @@ def handle_message(event):
             text='這個是buttons',
             actions=[
                 PostbackTemplateAction(
-                    label='桃園家裡位置',
-                    display_text='桃園家裡位置',
+                    label='這個按鈕沒有用',
+                    display_text='接收PostBack使用的是@handler.add(PostbackEvent)，一樣使用後面的handle_postback(event)定義接收到的反應。',
                     data='postback1'
                 ),
                 MessageTemplateAction(
