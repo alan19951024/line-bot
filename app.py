@@ -97,13 +97,13 @@ def handle_message(event):
             text='這個是buttons',
             actions=[
                 PostbackTemplateAction(
-                    label='測試按鈕',
-                    display_text='測試 text',
-                    data='action=buy&itemid=1'
+                    label='柔柔家裡位置1',
+                    display_text='柔柔家裡位置2',
+                    data='postback1'
                 ),
                 MessageTemplateAction(
-                    label='message',
-                    text='message text'
+                    label='柔柔家裡位置',
+                    text='柔柔家裡位置'
                 ),
                 URITemplateAction(
                     label='我的fb',
