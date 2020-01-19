@@ -40,8 +40,8 @@ def callback():
 
     return 'OK'
 def udn_news():
-    target_url = 'https://udn.com/search/tagging/2/%E6%97%A5%E5%B9%A3'
-    print('News....')
+    target_url = 'https://tw.appledaily.com/new/realtime'
+    print('Start parsing appleNews....')
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     soup = BeautifulSoup(res.text, 'html.parser')
