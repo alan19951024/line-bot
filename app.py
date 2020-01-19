@@ -40,10 +40,10 @@ def handle_message(event):
     msg = event.message.text
     r = '目前的功能只有這些,請輸入:(早餐,桃園家裡位置,柔柔家裡位置,按鈕,貼圖),輸入別的會沒東西'
 
-    if '貼圖' in msg:
+    if '給我貼圖' in msg:
         sticker_message = StickerSendMessage(
-            package_id='36',
-            sticker_id='2'
+            package_id='1',
+            sticker_id='1'
         )
 
         line_bot_api.reply_message(
