@@ -109,6 +109,10 @@ def handle_message(event):
                 title='八德國賓',
                 text='八德國賓資訊',
                 actions=[
+                    MessageAction(
+                        label='電影院位置',
+                        text='八德國賓'
+                    ),
                     URITemplateAction(
                         label='電影時刻',
                         uri='https://www.ambassador.com.tw/home/Showtime?ID=8fda9934-73d4-4c14-b1c4-386c2b81045c&D'
@@ -120,10 +124,6 @@ def handle_message(event):
                     URITemplateAction(
                         label='影城資訊',
                         uri='https://www.ambassador.com.tw/home/theater_intro_a12'
-                    ),
-                    MessageAction(
-                        label='message2',
-                        text='message text2'
                     )
                 ]
             ),
@@ -132,6 +132,10 @@ def handle_message(event):
                 title='新莊國賓',
                 text='新莊國賓資訊',
                 actions=[
+                    MessageAction(
+                        label='電影院位置',
+                        text='新莊國賓'
+                    ),
                     URITemplateAction(
                         label='電影時刻',
                         uri='https://www.ambassador.com.tw/home/Showtime?ID=3301d822-b385-4aa8-a9eb-aa59d58e95c9&DT'
@@ -143,10 +147,6 @@ def handle_message(event):
                     URITemplateAction(
                         label='影城資訊',
                         uri='https://www.ambassador.com.tw/home/theater_intro_a10'
-                    ),
-                    MessageAction(
-                        label='message2',
-                        text='message text2'
                     )
                 ]
             )
