@@ -124,7 +124,7 @@ def handle_message(event):
         location_message2)
         return
     
-    if '八德國賓電影院位置' in msg:
+    if '八德國賓' in msg:
         location_message3 = LocationSendMessage(
         title='八德國賓電影院位置',
         address='八德國賓電影院',
@@ -136,7 +136,7 @@ def handle_message(event):
         location_message3)
         return
 
-    if '新莊國賓電影院位置' in msg:
+    if '新莊國賓' in msg:
         location_message4 = LocationSendMessage(
         title='新莊國賓電影院位置',
         address='新莊國賓電影院位置',
@@ -148,7 +148,7 @@ def handle_message(event):
         location_message4)
         return  
 
-    if '電影' in msg:
+    if '看電影' in msg:
         Carousel_template = TemplateSendMessage(
         alt_text='看電影專用',
         template=CarouselTemplate(
@@ -172,7 +172,7 @@ def handle_message(event):
                     ),
                     MessageTemplateAction(
                     label='電影院位置',
-                    text='八德國賓電影院位置'
+                    text='八德國賓'
                     )
                 ]
             ),
@@ -195,7 +195,7 @@ def handle_message(event):
                     ),
                     MessageTemplateAction(
                     label='電影院位置',
-                    text='新莊國賓電影院位置'
+                    text='新莊國賓'
                     )
                 ]
             )
