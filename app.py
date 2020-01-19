@@ -42,7 +42,7 @@ def handle_message(event):
 
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
-            package_id='158',
+            package_id='36',
             sticker_id='2'
         )
 
