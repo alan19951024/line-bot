@@ -74,7 +74,7 @@ def technews():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '請輸入:功能 + \n + 輸入這兩個字,可以找璇部功能'
+    r = '請輸入:功能  \n  (輸入這兩個字,可以找目前所有功能'
 
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
@@ -249,7 +249,7 @@ def handle_message(event):
         r = '請輸入:(早餐,電影,貼圖,外幣,蘋果即時新聞,科技新聞),其中一個名詞即可進入功能,輸入其他字無法啟動'
     elif msg == '北鼻':
         r = '加油'
-    elif msg == '蘋果新聞':
+    elif msg == '蘋果即時新聞':
         r = apple_news()
     elif msg == '科技新聞':
         r = technews()
