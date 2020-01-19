@@ -122,8 +122,8 @@ def handle_message(event):
                         uri='https://www.ambassador.com.tw/home/theater_intro_a12'
                     ),
                     MessageAction(
-                        label='電影院位置',
-                        text='八德國賓'
+                        label='message2',
+                        text='message text2'
                     )
                 ]
             ),
@@ -145,8 +145,8 @@ def handle_message(event):
                         uri='https://www.ambassador.com.tw/home/theater_intro_a10'
                     ),
                     MessageAction(
-                        label='電影院位置',
-                        text='新莊國賓'
+                        label='message2',
+                        text='message text2'
                     )
                 ]
             )
