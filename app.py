@@ -144,7 +144,7 @@ def handle_message(event):
                         label='影城資訊',
                         uri='https://www.ambassador.com.tw/home/theater_intro_a10'
                     ),
-                     MessageAction(
+                    MessageAction(
                         label='電影院位置',
                         text='新莊國賓'
                     )
@@ -152,7 +152,7 @@ def handle_message(event):
             )
         ]
     )
-    )
+)
         line_bot_api.reply_message(
         event.reply_token,
         Carousel_template1)
@@ -195,7 +195,7 @@ def handle_message(event):
             )
         ]
     )
-    )
+)
         line_bot_api.reply_message(
         event.reply_token,
         Carousel_template2)
