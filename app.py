@@ -62,6 +62,7 @@ def movie():
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
+
     for index, data in enumerate(soup.select('ul.filmNextListAll a')):
         if index == 20:
             return content
@@ -139,35 +140,76 @@ def handle_message(event):
         event.reply_token,
         location_message2)
         return
-
-    if '按鈕' in msg:
-        buttons_template_message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-            thumbnail_image_url='https://i.imgur.com/08O1jth.jpg',
-            title='選單',
-            text='這個是buttons',
-            actions=[
-                PostbackTemplateAction(
-                    label='這個按鈕沒有用',
-                    display_text='接收PostBack使用的是@handler.add(PostbackEvent)，一樣使用後面的handle_postback(event)定義接收到的反應。',
-                    data='postback1'
-                ),
-                MessageTemplateAction(
-                    label='柔柔家裡位置',
-                    text='柔柔家裡位置'
-                ),
-                URITemplateAction(
-                    label='line機器人文章',
-                    uri='https://ithelp.ithome.com.tw/articles/10195640?sc=iThomeR'
-                )
-            ]
+    
+    if '八德國賓電影院位置' in msg:
+        location_message2 = LocationSendMessage(
+        title='八德國賓電影院位置',
+        address='八德國賓電影院位置',
+        latitude=24.964764,
+        longitude=121.298895
         )
-     )
-        line_bot_api.reply_message(
-        event.reply_token,
-        buttons_template_message)
-        return
+    if '新莊國賓電影院位置' in msg:
+        location_message2 = LocationSendMessage(
+        title='新莊國賓電影院位置',
+        address='新莊國賓電影院位置',
+        latitude=25.063936,
+        longitude=121.458913
+        )    
+
+    if '電影'' in msg:
+        Carousel_template = TemplateSendMessage(
+        alt_text='看電影專用',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                thumbnail_image_url='https://i.imgur.com/mj76gq0.jpg',
+                title='八德國賓',
+                text='八德國賓資訊',
+                actions=[
+                    URITemplateAction(
+                        label='電影時刻',
+                        uri='https://www.ambassador.com.tw/home/Showtime?ID=8fda9934-73d4-4c14-b1c4-386c2b81045c&DT'
+                    ),
+                    URITemplateAction(
+                        label='即將上映電影',
+                        uri='https://www.ambassador.com.tw/home/MovieList?Type=0'
+                    ),
+                    URITemplateAction(
+                        label='影城資訊',
+                        uri='https://www.ambassador.com.tw/home/theater_intro_a12'
+                    ),
+                    MessageTemplateAction(
+                    label='電影院位置',
+                    text='八德國賓電影院位置'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://i.imgur.com/mj76gq0.jpg',
+                title='新莊國賓',
+                text='新莊國賓資訊',
+                actions=[
+                    URITemplateAction(
+                        label='電影時刻',
+                        uri='https://www.ambassador.com.tw/home/Showtime?ID=3301d822-b385-4aa8-a9eb-aa59d58e95c9&DT'
+                    ),
+                    URITemplateAction(
+                        label='即將上映電影',
+                        uri='https://www.ambassador.com.tw/home/MovieList?Type=0'
+                    ),
+                    URITemplateAction(
+                        label='影城資訊',
+                        uri='https://www.ambassador.com.tw/home/theater_intro_a10'
+                    ),
+                    MessageTemplateAction(
+                    label='電影院位置',
+                    text='新莊國賓電影院位置'
+                    )
+                ]
+            )
+        ]
+    )
+    )
     if '外幣' in msg:
         Carousel_template = TemplateSendMessage(
         alt_text='找匯率專用',
@@ -193,9 +235,9 @@ def handle_message(event):
                 title='美金',
                 text='查美金匯率專用',
                 actions=[
-                    MessageTemplateAction(
-                        label='message2',
-                        text='message text2'
+                    URITemplateAction(
+                        label='美金新聞',
+                        uri='https://news.ltn.com.tw/topic/%E7%BE%8E%E5%85%83'
                     ),
                     URITemplateAction(
                         label='美金換匯即時網站',
@@ -214,15 +256,14 @@ def handle_message(event):
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
     elif msg == '功能':
-        r = '請輸入:早餐,桃園家裡位置,柔柔家裡位置,按鈕,貼圖'
+        r = '請輸入:(早餐,電影,貼圖,外幣,蘋果新聞,科技新聞),其中一下即可進入功能,輸入其他字無法啟動'
     elif msg == '北鼻':
         r = '加油'
     elif msg == '蘋果新聞':
         r = apple_news()
     elif msg == '科技新聞':
         r = technews()
-    elif msg == '近期電影':
-        r = movie()
+
 
     line_bot_api.reply_message(
         event.reply_token,
