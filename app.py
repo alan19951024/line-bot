@@ -97,58 +97,9 @@ def handle_message(event):
         event.reply_token,
         image_message)
         return
-#傳位置
-    if '桃園家裡位置' in msg:
-        location_message = LocationSendMessage(
-        title='桃園家裡住址',
-        address='桃園家',
-        latitude=25.009534,
-        longitude=121.295280
-        )
 
-        line_bot_api.reply_message(
-        event.reply_token,
-        location_message)
-        return
 
-    if '柔柔家裡位置' in msg:
-        location_message2 = LocationSendMessage(
-        title='柔柔家裡位置',
-        address='柔柔家',
-        latitude=25.003485,
-        longitude=121.514675
-        )
-
-        line_bot_api.reply_message(
-        event.reply_token,
-        location_message2)
-        return
-    
-    if '八德國賓' in msg:
-        location_message3 = LocationSendMessage(
-        title='八德國賓電影院位置',
-        address='八德國賓電影院',
-        latitude=24.964764,
-        longitude=121.298895
-        )
-        line_bot_api.reply_message(
-        event.reply_token,
-        location_message3)
-        return
-
-    if '新莊國賓' in msg:
-        location_message4 = LocationSendMessage(
-        title='新莊國賓電影院位置',
-        address='新莊國賓電影院位置',
-        latitude=25.063936,
-        longitude=121.458913
-        ) 
-        line_bot_api.reply_message(
-        event.reply_token,
-        location_message4)
-        return  
-
-    if '看電影' in msg:
+    if '電影' in msg:
         Carousel_template = TemplateSendMessage(
         alt_text='看電影專用',
         template=CarouselTemplate(
@@ -249,7 +200,57 @@ def handle_message(event):
         event.reply_token,
         Carousel_template2)
         return    
+#傳位置
+    if '桃園家裡位置' in msg:
+        location_message = LocationSendMessage(
+        title='桃園家裡住址',
+        address='桃園家',
+        latitude=25.009534,
+        longitude=121.295280
+        )
 
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message)
+        return
+
+    if '柔柔家裡位置' in msg:
+        location_message2 = LocationSendMessage(
+        title='柔柔家裡位置',
+        address='柔柔家',
+        latitude=25.003485,
+        longitude=121.514675
+        )
+
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message2)
+        return
+    
+    if '八德國賓' in msg:
+        location_message3 = LocationSendMessage(
+        title='八德國賓電影院位置',
+        address='八德國賓電影院',
+        latitude=24.964764,
+        longitude=121.298895
+        )
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message3)
+        return
+
+    if '新莊國賓' in msg:
+        location_message4 = LocationSendMessage(
+        title='新莊國賓電影院位置',
+        address='新莊國賓電影院位置',
+        latitude=25.063936,
+        longitude=121.458913
+        ) 
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message4)
+        return 
+         
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
     elif msg == '功能':
