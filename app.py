@@ -39,7 +39,8 @@ def callback():
         abort(400)
 
     return 'OK'
-def udn_news():
+#蘋果頭條前8
+def apple_news():
     target_url = 'https://tw.appledaily.com/new/realtime'
     print('Start parsing appleNews....')
     rs = requests.session()
@@ -47,11 +48,44 @@ def udn_news():
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
     for index, data in enumerate(soup.select('.rtddt a'), 0):
-        if index == 5:
+        if index == 8:
             return content
         link = data['href']
         content += '{}\n\n'.format(link)
-    return content
+    return
+#近期電影
+def movie():
+    target_url = 'http://www.atmovies.com.tw/movie/next/0/'
+    print('Start parsing movie ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+    for index, data in enumerate(soup.select('ul.filmNextListAll a')):
+        if index == 20:
+            return content
+        title = data.text.replace('\t', '').replace('\r', '')
+        link = "http://www.atmovies.com.tw" + data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return
+
+def technews():
+    target_url = 'https://technews.tw/'
+    print('Start parsing movie ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+
+    for index, data in enumerate(soup.select('article div h1.entry-title a')):
+        if index == 12:
+            return content
+        title = data.text
+        link = data['href']
+        content += '{}\n{}\n\n'.format(title, link)
+    return content 
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -144,9 +178,9 @@ def handle_message(event):
                 title='日幣',
                 text='查日幣匯率專用',
                 actions=[
-                    MessageTemplateAction(
+                    URITemplateAction(
                         label='日幣新聞',
-                        text='日幣新聞'
+                        uri='https://udn.com/search/tagging/2/%E6%97%A5%E5%B9%A3'
                     ),
                     URITemplateAction(
                         label='日幣換匯即時網站',
@@ -183,8 +217,12 @@ def handle_message(event):
         r = '請輸入:早餐,桃園家裡位置,柔柔家裡位置,按鈕,貼圖'
     elif msg == '北鼻':
         r = '加油'
-    elif msg == '日幣新聞':
-        r = udn_news()
+    elif msg == '蘋果新聞':
+        r = apple_news()
+    elif msg == '科技新聞':
+        r = technews()
+    elif msg == '近期電影':
+        r = movie()
 
     line_bot_api.reply_message(
         event.reply_token,
