@@ -13,7 +13,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction,TemplateSendMessage, CarouselColumn,CarouselTemplate
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction,TemplateSendMessage, CarouselColumn,CarouselTemplate,MessageAction
 )
 
 app = Flask(__name__)
@@ -121,7 +121,7 @@ def handle_message(event):
                         label='影城資訊',
                         uri='https://www.ambassador.com.tw/home/theater_intro_a12'
                     ),
-                    MessageTemplateAction(
+                    MessageAction(
                         label='電影院位置',
                         text='八德國賓'
                     )
@@ -144,7 +144,7 @@ def handle_message(event):
                         label='影城資訊',
                         uri='https://www.ambassador.com.tw/home/theater_intro_a10'
                     ),
-                    MessageTemplateAction(
+                     MessageAction(
                         label='電影院位置',
                         text='新莊國賓'
                     )
