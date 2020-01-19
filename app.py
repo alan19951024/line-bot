@@ -53,23 +53,6 @@ def apple_news():
         link = data['href']
         content += '{}\n\n'.format(link)
     return
-#近期電影
-def movie():
-    target_url = 'http://www.atmovies.com.tw/movie/next/0/'
-    print('Start parsing movie ...')
-    rs = requests.session()
-    res = rs.get(target_url, verify=False)
-    res.encoding = 'utf-8'
-    soup = BeautifulSoup(res.text, 'html.parser')
-    content = ""
-
-    for index, data in enumerate(soup.select('ul.filmNextListAll a')):
-        if index == 20:
-            return content
-        title = data.text.replace('\t', '').replace('\r', '')
-        link = "http://www.atmovies.com.tw" + data['href']
-        content += '{}\n{}\n'.format(title, link)
-    return
 
 def technews():
     target_url = 'https://technews.tw/'
@@ -91,7 +74,7 @@ def technews():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '目前的功能只有這些,請輸入:(早餐,桃園家裡位置,柔柔家裡位置,按鈕,貼圖),輸入別的會沒東西'
+    r = '請輸入:功能''
 
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
@@ -142,7 +125,7 @@ def handle_message(event):
         return
     
     if '八德國賓電影院位置' in msg:
-        location_message2 = LocationSendMessage(
+        location_message3 = LocationSendMessage(
         title='八德國賓電影院位置',
         address='八德國賓電影院位置',
         latitude=24.964764,
@@ -151,7 +134,7 @@ def handle_message(event):
         return
 
     if '新莊國賓電影院位置' in msg:
-        location_message2 = LocationSendMessage(
+        location_message4 = LocationSendMessage(
         title='新莊國賓電影院位置',
         address='新莊國賓電影院位置',
         latitude=25.063936,
@@ -216,7 +199,8 @@ def handle_message(event):
         line_bot_api.reply_message(
         event.reply_token,
         Carousel_template)
-        return      
+        return 
+
     if '外幣' in msg:
         Carousel_template2 = TemplateSendMessage(
         alt_text='找匯率專用',
