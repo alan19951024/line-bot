@@ -105,14 +105,10 @@ def handle_message(event):
         template=CarouselTemplate(
         columns=[
             CarouselColumn(
-                thumbnail_image_url='https://i.imgur.com/mj76gq0.jpg',
+                thumbnail_image_url='https://i.imgur.com/u6t3k33.jpg',
                 title='八德國賓',
                 text='八德國賓資訊',
                 actions=[
-                     PostbackTemplateAction(
-                        label='電影院位置',
-                        display_text = '八德國賓'
-                    ),
                     URITemplateAction(
                         label='電影時刻',
                         uri='https://www.ambassador.com.tw/home/Showtime?ID=8fda9934-73d4-4c14-b1c4-386c2b81045c&D'
@@ -128,14 +124,10 @@ def handle_message(event):
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://i.imgur.com/mj76gq0.jpg',
+                thumbnail_image_url='https://i.imgur.com/M1Xmw4h.jpg',
                 title='新莊國賓',
                 text='新莊國賓資訊',
                 actions=[
-                     PostbackTemplateAction(
-                        label='電影院位置',
-                        display_text = '新莊國賓'
-                    ),
                     URITemplateAction(
                         label='電影時刻',
                         uri='https://www.ambassador.com.tw/home/Showtime?ID=3301d822-b385-4aa8-a9eb-aa59d58e95c9&DT'
