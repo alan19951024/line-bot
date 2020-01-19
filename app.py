@@ -148,15 +148,18 @@ def handle_message(event):
         latitude=24.964764,
         longitude=121.298895
         )
+        return
+
     if '新莊國賓電影院位置' in msg:
         location_message2 = LocationSendMessage(
         title='新莊國賓電影院位置',
         address='新莊國賓電影院位置',
         latitude=25.063936,
         longitude=121.458913
-        )    
+        ) 
+        return   
 
-    if '電影'' in msg:
+    if '電影' in msg:
         Carousel_template = TemplateSendMessage(
         alt_text='看電影專用',
         template=CarouselTemplate(
@@ -210,8 +213,12 @@ def handle_message(event):
         ]
     )
     )
+        line_bot_api.reply_message(
+        event.reply_token,
+        Carousel_template)
+        return      
     if '外幣' in msg:
-        Carousel_template = TemplateSendMessage(
+        Carousel_template2 = TemplateSendMessage(
         alt_text='找匯率專用',
         template=CarouselTemplate(
         columns=[
@@ -250,7 +257,7 @@ def handle_message(event):
     )
         line_bot_api.reply_message(
         event.reply_token,
-        Carousel_template)
+        Carousel_template2)
         return    
 
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
