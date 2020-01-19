@@ -109,9 +109,9 @@ def handle_message(event):
                 title='八德國賓',
                 text='八德國賓資訊',
                 actions=[
-                    MessageTemplateAction(
+                     PostbackTemplateAction(
                         label='電影院位置',
-                        text='八德國賓'
+                        display_text = '八德國賓'
                     ),
                     URITemplateAction(
                         label='電影時刻',
@@ -132,9 +132,9 @@ def handle_message(event):
                 title='新莊國賓',
                 text='新莊國賓資訊',
                 actions=[
-                    MessageTemplateAction(
+                     PostbackTemplateAction(
                         label='電影院位置',
-                        text='新莊國賓'
+                        display_text = '新莊國賓'
                     ),
                     URITemplateAction(
                         label='電影時刻',
