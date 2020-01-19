@@ -1,3 +1,9 @@
+import requests
+import re
+import random
+import configparser
+from bs4 import BeautifulSoup
+
 from flask import Flask, request, abort
 
 from linebot import (
@@ -33,7 +39,19 @@ def callback():
         abort(400)
 
     return 'OK'
-
+def udn_news():
+    target_url = 'https://udn.com/search/tagging/2/%E6%97%A5%E5%B9%A3'
+    print('News....')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+    for index, data in enumerate(soup.select('.rtddt a'), 0):
+        if index == 5:
+            return content
+        link = data['href']
+        content += '{}\n\n'.format(link)
+    return content
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -127,8 +145,8 @@ def handle_message(event):
                 text='查日幣匯率專用',
                 actions=[
                     MessageTemplateAction(
-                        label='message1',
-                        text='message text1'
+                        label='日幣新聞',
+                        text='日幣新聞'
                     ),
                     URITemplateAction(
                         label='日幣換匯即時網站',
@@ -156,7 +174,8 @@ def handle_message(event):
     )
         line_bot_api.reply_message(
         event.reply_token,
-        Carousel_template)    
+        Carousel_template)
+        return    
 
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
@@ -164,11 +183,13 @@ def handle_message(event):
         r = '請輸入:早餐,桃園家裡位置,柔柔家裡位置,按鈕,貼圖'
     elif msg == '北鼻':
         r = '加油'
+    elif msg == '日幣新聞':
+        r = udn_news()
+
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=r))
-
-
+        return
 
 if __name__ == "__main__":
     app.run()
