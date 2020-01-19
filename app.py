@@ -99,8 +99,8 @@ def handle_message(event):
         return
 
 
-    if '電影' in msg:
-        Carousel_template = TemplateSendMessage(
+    if '我要電影' in msg:
+        Carousel_template1 = TemplateSendMessage(
         alt_text='看電影專用',
         template=CarouselTemplate(
         columns=[
@@ -155,8 +155,8 @@ def handle_message(event):
     )
         line_bot_api.reply_message(
         event.reply_token,
-        Carousel_template)
-        return 
+        Carousel_template1)
+        return    
 
     if '外幣' in msg:
         Carousel_template2 = TemplateSendMessage(
@@ -250,7 +250,7 @@ def handle_message(event):
         event.reply_token,
         location_message4)
         return 
-         
+
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
     elif msg == '功能':
