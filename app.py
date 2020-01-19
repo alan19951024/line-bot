@@ -110,7 +110,7 @@ def handle_message(event):
                 text='八德國賓資訊',
                 actions=[
                     URITemplateAction(
-                        label='電影時刻'',
+                        label='電影時刻',
                         uri='https://www.ambassador.com.tw/home/Showtime?ID=8fda9934-73d4-4c14-b1c4-386c2b81045c&D'
                     ),
                     URITemplateAction(
