@@ -109,7 +109,7 @@ def handle_message(event):
                 title='八德國賓',
                 text='八德國賓資訊',
                 actions=[
-                    MessageAction(
+                    MessageTemplateAction(
                         label='電影院位置',
                         text='八德國賓'
                     ),
@@ -132,7 +132,7 @@ def handle_message(event):
                 title='新莊國賓',
                 text='新莊國賓資訊',
                 actions=[
-                    MessageAction(
+                    MessageTemplateAction(
                         label='電影院位置',
                         text='新莊國賓'
                     ),
