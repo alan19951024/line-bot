@@ -116,6 +116,10 @@ def handle_message(event):
                     URITemplateAction(
                         label='即將上映電影',
                         uri='https://www.ambassador.com.tw/home/MovieList?Type=0'
+                    ),
+                    URITemplateAction(
+                        label='影城資訊',
+                        uri='https://www.ambassador.com.tw/home/theater_intro_a12'
                     )
                 ]
             ),
@@ -130,6 +134,10 @@ def handle_message(event):
                     ),
                     URITemplateAction(
                         label='即將上映電影',
+                        uri='https://www.ambassador.com.tw/home/MovieList?Type=0'
+                    ),
+                    URITemplateAction(
+                        label='影城資訊',
                         uri='https://www.ambassador.com.tw/home/theater_intro_a10'
                     )
                 ]
