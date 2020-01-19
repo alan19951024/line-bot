@@ -125,22 +125,28 @@ def handle_message(event):
         return
     
     if '八德國賓電影院位置' in msg:
-        location_message_3 = LocationSendMessage(
+        location_message3 = LocationSendMessage(
         title='八德國賓電影院位置',
-        address='八德國賓電影院位置',
+        address='八德國賓電影院',
         latitude=24.964764,
         longitude=121.298895
         )
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message3)
         return
 
     if '新莊國賓電影院位置' in msg:
-        location_message_4 = LocationSendMessage(
+        location_message4 = LocationSendMessage(
         title='新莊國賓電影院位置',
         address='新莊國賓電影院位置',
         latitude=25.063936,
         longitude=121.458913
         ) 
-        return   
+        line_bot_api.reply_message(
+        event.reply_token,
+        location_message4)
+        return  
 
     if '電影' in msg:
         Carousel_template = TemplateSendMessage(
