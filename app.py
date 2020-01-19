@@ -158,48 +158,48 @@ def handle_message(event):
         Carousel_template1)
         return    
 
-    if '外幣' in msg:
-        Carousel_template2 = TemplateSendMessage(
-        alt_text='找匯率專用',
-        template=CarouselTemplate(
-        columns=[
-            CarouselColumn(
-                thumbnail_image_url='https://i.imgur.com/XMtYFim.jpg',
-                title='日幣',
-                text='查日幣匯率專用',
-                actions=[
-                    URITemplateAction(
-                        label='日幣新聞',
-                        uri='https://udn.com/search/tagging/2/%E6%97%A5%E5%B9%A3'
-                    ),
-                    URITemplateAction(
-                        label='日幣換匯即時網站',
-                        uri='https://www.findrate.tw/JPY/#.XiRassgzaUk'
-                    )
-                ]
-            ),
-            CarouselColumn(
-                thumbnail_image_url='https://i.imgur.com/2h6IcPH.jpg',
-                title='美金',
-                text='查美金匯率專用',
-                actions=[
-                    URITemplateAction(
-                        label='美金新聞',
-                        uri='https://news.ltn.com.tw/topic/%E7%BE%8E%E5%85%83'
-                    ),
-                    URITemplateAction(
-                        label='美金換匯即時網站',
-                        uri='https://tw.rter.info/currency/USD/'
-                    )
-                ]
-            )
-        ]
-    )
-    )
-        line_bot_api.reply_message(
-        event.reply_token,
-        Carousel_template2)
-        return    
+    # if '外幣' in msg:
+    #     Carousel_template2 = TemplateSendMessage(
+    #     alt_text='找匯率專用',
+    #     template=CarouselTemplate(
+    #     columns=[
+    #         CarouselColumn(
+    #             thumbnail_image_url='https://i.imgur.com/XMtYFim.jpg',
+    #             title='日幣',
+    #             text='查日幣匯率專用',
+    #             actions=[
+    #                 URITemplateAction(
+    #                     label='日幣新聞',
+    #                     uri='https://udn.com/search/tagging/2/%E6%97%A5%E5%B9%A3'
+    #                 ),
+    #                 URITemplateAction(
+    #                     label='日幣換匯即時網站',
+    #                     uri='https://www.findrate.tw/JPY/#.XiRassgzaUk'
+    #                 )
+    #             ]
+    #         ),
+    #         CarouselColumn(
+    #             thumbnail_image_url='https://i.imgur.com/2h6IcPH.jpg',
+    #             title='美金',
+    #             text='查美金匯率專用',
+    #             actions=[
+    #                 URITemplateAction(
+    #                     label='美金新聞',
+    #                     uri='https://news.ltn.com.tw/topic/%E7%BE%8E%E5%85%83'
+    #                 ),
+    #                 URITemplateAction(
+    #                     label='美金換匯即時網站',
+    #                     uri='https://tw.rter.info/currency/USD/'
+    #                 )
+    #             ]
+    #         )
+    #     ]
+    # )
+    # )
+    #     line_bot_api.reply_message(
+    #     event.reply_token,
+    #     Carousel_template2)
+    #     return    
 #傳位置
     if '桃園家裡位置' in msg:
         location_message = LocationSendMessage(
