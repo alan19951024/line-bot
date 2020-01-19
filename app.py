@@ -74,7 +74,7 @@ def technews():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '請輸入:功能''
+    r = '請輸入:功能'
 
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
@@ -125,7 +125,7 @@ def handle_message(event):
         return
     
     if '八德國賓電影院位置' in msg:
-        location_message3 = LocationSendMessage(
+        location_message_3 = LocationSendMessage(
         title='八德國賓電影院位置',
         address='八德國賓電影院位置',
         latitude=24.964764,
@@ -134,7 +134,7 @@ def handle_message(event):
         return
 
     if '新莊國賓電影院位置' in msg:
-        location_message4 = LocationSendMessage(
+        location_message_4 = LocationSendMessage(
         title='新莊國賓電影院位置',
         address='新莊國賓電影院位置',
         latitude=25.063936,
