@@ -74,7 +74,7 @@ def technews():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '請輸入:功能'
+    r = '請輸入:功能 /n 查找功能'
 
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
