@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage,ImageSendMessage,LocationSendMessage,TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction,TemplateSendMessage, CarouselColumn
 )
 
 app = Flask(__name__)
@@ -116,7 +116,47 @@ def handle_message(event):
         event.reply_token,
         buttons_template_message)
         return
-            
+    if '外幣' in msg:
+        Carousel_template = TemplateSendMessage(
+        alt_text='找匯率專用',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                thumbnail_image_url='https://i.imgur.com/XMtYFim.jpg',
+                title='日幣',
+                text='查日幣匯率專用',
+                actions=[
+                    MessageTemplateAction(
+                        label='message1',
+                        text='message text1'
+                    ),
+                    URITemplateAction(
+                        label='日幣換匯即時網站',
+                        uri='https://www.findrate.tw/JPY/#.XiRassgzaUk'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://i.imgur.com/2h6IcPH.jpg',
+                title='美金',
+                text='查美金匯率專用',
+                actions=[
+                    MessageTemplateAction(
+                        label='message2',
+                        text='message text2'
+                    ),
+                    URITemplateAction(
+                        label='美金換匯即時網站',
+                        uri='https://tw.rter.info/currency/USD/'
+                    )
+                ]
+            )
+        ]
+    )
+    )
+        line_bot_api.reply_message(
+        event.reply_token,
+        Carousel_template)    
 
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
