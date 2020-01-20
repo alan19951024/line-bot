@@ -75,7 +75,7 @@ def technews():
 def handle_message(event):
     msg = event.message.text
     #r = '請輸入:功能  \n  (輸入這兩個字,可以找目前所有功能)'
-    if event.message.text == "功能":
+    if msg == "功能":
         buttons_template = TemplateSendMessage(
             alt_text='功能列表',
             template=ButtonsTemplate(
@@ -92,7 +92,7 @@ def handle_message(event):
                         text='電影'
                     ),
                     MessageTemplateAction(
-                        label='查看外幣匯率'',
+                        label='查看外幣匯率',
                         text='外幣'
                     ),
                     MessageTemplateAction(
@@ -274,8 +274,6 @@ def handle_message(event):
 
     if msg in ['hi','哈瞜','HI','哈囉','你好']:
         r = 'hi'
-    elif msg == '功能':
-        r = '請輸入:早餐,電影,貼圖,外幣,蘋果即時新聞,科技新聞 \n (其中一個名詞即可進入功能,輸入其他字無法啟動)'
     elif msg == '北鼻':
         r = '加油'
     elif msg == '蘋果即時新聞':
