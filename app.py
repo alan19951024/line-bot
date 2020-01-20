@@ -229,7 +229,7 @@ def handle_message(event):
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://i.imgur.com/2h6IcPH.jpg',
+                thumbnail_image_url='https://i.imgur.com/EQtfDY6.jpg',
                 title='人民幣',
                 text='人民幣匯率專用',
                 actions=[
