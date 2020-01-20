@@ -79,8 +79,8 @@ def handle_message(event):
         buttons_template = TemplateSendMessage(
             alt_text='功能列表',
             template=ButtonsTemplate(
-                title='選擇功能',
-                text='請選擇',
+                title='功能選單',
+                text='請點下列選項',
                 thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
                 actions=[
                     MessageTemplateAction(
@@ -115,18 +115,32 @@ def handle_message(event):
         event.reply_token,
         sticker_message)
         return
-#傳圖片
-    if '早餐' in msg:
-        image_message = ImageSendMessage(
-        original_content_url='https://i.imgur.com/JouT00p.jpg',
-        preview_image_url='https://i.imgur.com/JouT00pundefined.jpg'
+
+    if msg == '餐點':
+        buttons_template2 = TemplateSendMessage(
+            alt_text='餐點列表',
+            template=ButtonsTemplate(
+                title='餐點選單',
+                text='請點下列選項',
+                thumbnail_image_url='https://i.imgur.com/bAIN2lW.jpg',
+                actions=[
+                    URITemplateAction(
+                        label='早餐',
+                        uri='https://photos.app.goo.gl/excAZsSxNEKqbWcn8'
+                    ),
+                    URITemplateAction(
+                        label='77.food 美食ig',
+                        uri='https://www.instagram.com/77.food/?hl=zh-tw'
+                    ),
+                    URITemplateAction(
+                        label='eatnini 美食ig',
+                        uri='https://www.instagram.com/eatnini/?hl=zh-tw'
+                    )
+                ]
+            )
         )
-
-        line_bot_api.reply_message(
-        event.reply_token,
-        image_message)
-        return
-
+        line_bot_api.reply_message(event.reply_token, buttons_template2)
+        return 
 
     if '電影' in msg:
         Carousel_template1 = TemplateSendMessage(
@@ -211,6 +225,36 @@ def handle_message(event):
                     URITemplateAction(
                         label='美金換匯即時網站',
                         uri='https://tw.rter.info/currency/USD/'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://i.imgur.com/2h6IcPH.jpg',
+                title='人民幣',
+                text='人民幣匯率專用',
+                actions=[
+                    URITemplateAction(
+                        label='人民幣新聞',
+                        uri='https://news.ltn.com.tw/topic/%E4%BA%BA%E6%B0%91%E5%B9%A3'
+                    ),
+                    URITemplateAction(
+                        label='人民幣換匯即時網站',
+                        uri='https://www.taiwanrate.org/exchange_rate.php?c=CNY#.XiVW_sgzaUk'
+                    )
+                ]
+            ),    
+            CarouselColumn(
+                thumbnail_image_url='https://i.imgur.com/MBMuK3n.jpg',
+                title='韓元',
+                text='韓元匯率專用',
+                actions=[
+                    URITemplateAction(
+                        label='韓元新聞',
+                        uri='https://www.ettoday.net/news_search/doSearch.php?keywords=%E9%9F%93%E5%85%83&kind=17&idx=2'
+                    ),
+                    URITemplateAction(
+                        label='韓元換匯即時網站',
+                        uri='https://www.findrate.tw/KRW/#.XiVZ7cgzaUk'
                     )
                 ]
             )
