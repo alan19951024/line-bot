@@ -74,7 +74,36 @@ def technews():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '請輸入:功能  \n  (輸入這兩個字,可以找目前所有功能)'
+    #r = '請輸入:功能  \n  (輸入這兩個字,可以找目前所有功能)'
+    if event.message.text == "功能":
+        buttons_template = TemplateSendMessage(
+            alt_text='功能列表',
+            template=ButtonsTemplate(
+                title='選擇功能',
+                text='請選擇',
+                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='蘋果即時新聞',
+                        text='蘋果即時新聞'
+                    ),
+                    MessageTemplateAction(
+                        label='國賓電影',
+                        text='電影'
+                    ),
+                    MessageTemplateAction(
+                        label='查看外幣匯率'',
+                        text='外幣'
+                    ),
+                    MessageTemplateAction(
+                        label='科技新聞',
+                        text='科技新聞'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 
 
     if '貼圖' in msg:
         sticker_message = StickerSendMessage(
