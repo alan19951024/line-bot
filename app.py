@@ -50,8 +50,10 @@ def apple_news():
     for index, data in enumerate(soup.select('.rtddt a'), 0):
         if index == 8:
             return content
+        title = data.find('img')['alt']    
         link = data['href']
-        content += '{}\n\n'.format(link)
+        link2 = 'https:'+ data.find('img')['data-src']
+        content += '{}\n\n'.format(title,link)
     return
 
 def technews():
