@@ -3,6 +3,8 @@ import re
 import random
 import configparser
 from bs4 import BeautifulSoup
+import bs4
+from requests import get
 
 from flask import Flask, request, abort
 
@@ -39,6 +41,35 @@ def callback():
         abort(400)
 
     return 'OK'
+
+# 協助分析爬蟲後的網址整理
+def string_merge(a):
+    r = ''
+    for i in a:
+        #r += i[0] + '\n' + i[1] + '\n\n'
+        r += '{0} \n {1} \n\n'.format(i[0],i[1])
+    return r
+
+#聯合報新聞
+def udn ():
+    url = 'https://udn.com/search/tagging/2/%E4%BB%8A%E6%97%A5%E9%A0%AD%E6%A2%9D'
+    headers = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+    }
+    res = get(url,headers=headers)#記得.text
+    res.encoding = 'utf8'
+    #print(response.text)
+
+    soup = bs4.BeautifulSoup(res.text,"lxml") #讓beautifulsoup 協助我們解析 html格式文件
+    titles = soup.find_all('div',class_='story-list__text')
+    lst =[]
+    for title in titles :
+        for a in title.find_all('h2'):
+            #print(a.text)
+            for b in a.find_all('a'):
+                #print(b.get('href'))
+                lst.append([a.text.replace('\n',''),b.get('href')])
+    return lst
+
 #蘋果頭條前8
 def apple_news():
     target_url = 'https://tw.appledaily.com/new/realtime'
@@ -324,6 +355,10 @@ def handle_message(event):
         r = apple_news()
     elif msg == '科技新聞':
         r = technews()
+    elif msg == '聯合報新聞':
+        a = udn()
+        r = string_merge(a)
+        print(r)
 
 
     line_bot_api.reply_message(
