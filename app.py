@@ -3,6 +3,8 @@ import re
 import random
 import configparser
 from bs4 import BeautifulSoup
+from requests import get
+import bs4
 
 from flask import Flask, request, abort
 
@@ -355,6 +357,7 @@ def handle_message(event):
     elif msg == '聯合報新聞':
         a = udn()
         r = string_merge(a)
+        print(r)
 
 
     line_bot_api.reply_message(
