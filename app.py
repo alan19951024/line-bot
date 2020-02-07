@@ -50,6 +50,21 @@ def string_merge(a):
         r += '{0} \n {1} \n\n'.format(i[0],i[1])
     return r
 
+#自由時報新聞
+def ltn ():
+        url = 'https://www.ltn.com.tw/'
+        res = get(url)
+        res.encoding = 'utf8'
+        soup = bs4.BeautifulSoup(res.text,'html.parser')
+        titles = soup.find_all("div",class_='news12 boxTitle')
+        lst=[]
+        for title in titles:
+                aa = title.find_all('a')
+                pp = title.find_all('p')
+                for p,a in zip(pp,aa): #zip (,)跑兩個迴圈以上
+                        lst.append([p.text.replace('  ',''),a.get('href'),'\n'])
+        return lst
+
 #聯合報新聞
 def udn ():
     url = 'https://udn.com/search/tagging/2/%E4%BB%8A%E6%97%A5%E9%A0%AD%E6%A2%9D'
@@ -358,7 +373,9 @@ def handle_message(event):
     elif msg == '聯合報新聞':
         a = udn()
         r = string_merge(a)
-        print(r)
+    elif msg =='自由時報新聞':
+        b = ltn()
+        r = string_merge(b)
         
 
 
