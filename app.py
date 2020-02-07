@@ -3,13 +3,8 @@ import re
 import random
 import configparser
 from bs4 import BeautifulSoup
-<<<<<<< HEAD
 from requests import get
 import bs4
-=======
-import bs4
-from requests import get
->>>>>>> 3b08f3f4deddff343d10b8f4af397ebc8c0e358d
 
 from flask import Flask, request, abort
 
