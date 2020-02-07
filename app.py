@@ -3,8 +3,13 @@ import re
 import random
 import configparser
 from bs4 import BeautifulSoup
+<<<<<<< HEAD
 from requests import get
 import bs4
+=======
+import bs4
+from requests import get
+>>>>>>> 3b08f3f4deddff343d10b8f4af397ebc8c0e358d
 
 from flask import Flask, request, abort
 
@@ -41,7 +46,8 @@ def callback():
         abort(400)
 
     return 'OK'
-#把爬到的資料全部放到line同一個訊息框裡
+
+# 協助分析爬蟲後的網址整理
 def string_merge(a):
     r = ''
     for i in a:
@@ -49,7 +55,7 @@ def string_merge(a):
         r += '{0} \n {1} \n\n'.format(i[0],i[1])
     return r
 
-#聯合報即時新聞
+#聯合報新聞
 def udn ():
     url = 'https://udn.com/search/tagging/2/%E4%BB%8A%E6%97%A5%E9%A0%AD%E6%A2%9D'
     headers = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
