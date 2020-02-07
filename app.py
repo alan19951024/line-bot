@@ -59,7 +59,7 @@ def udn ():
     res.encoding = 'utf8'
     #print(response.text)
 
-    soup = bs4.BeautifulSoup(res.text,"lxml") #讓beautifulsoup 協助我們解析 html格式文件
+    soup = bs4.BeautifulSoup(res.text,'html.parser') #讓beautifulsoup 協助我們解析 html格式文件
     titles = soup.find_all('div',class_='story-list__text')
     lst =[]
     for title in titles :
@@ -356,9 +356,8 @@ def handle_message(event):
     elif msg == '科技新聞':
         r = technews()
     elif msg == '聯合報新聞':
-        a = udn()
-        r = string_merge(a)
-        print(r)
+        r = udn()
+        
 
 
     line_bot_api.reply_message(
