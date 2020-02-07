@@ -356,7 +356,9 @@ def handle_message(event):
     elif msg == '科技新聞':
         r = technews()
     elif msg == '聯合報新聞':
-        r = udn()
+        a = udn()
+        r = string_merge(a)
+        print(r)
         
 
 
