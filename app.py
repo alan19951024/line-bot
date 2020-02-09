@@ -83,7 +83,7 @@ def udn ():
             for b in a.find_all('a'):
                 #print(b.get('href'))
                 lst.append([a.text.replace('\n',''),b.get('href')])
-    return lst[:10]
+    return lst
 
 #蘋果頭條前8
 def apple_news():
