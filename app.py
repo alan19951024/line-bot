@@ -67,7 +67,7 @@ def ltn ():
 
 #聯合報新聞
 def udn ():
-    url = 'https://udn.com/search/tagging/2/%E4%BB%8A%E6%97%A5%E9%A0%AD%E6%A2%9D'
+    url = 'https://udn.com/news/breaknews/1'
     headers = {'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
     }
     res = get(url,headers=headers)#記得.text
@@ -83,7 +83,7 @@ def udn ():
             for b in a.find_all('a'):
                 #print(b.get('href'))
                 lst.append([a.text.replace('\n',''),b.get('href')])
-    return lst
+    return lst[:10]
 
 #蘋果頭條前8
 def apple_news():
