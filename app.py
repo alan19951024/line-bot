@@ -78,12 +78,12 @@ def udn ():
     titles = soup.find_all('div',class_='story-list__text')
     lst =[]
     for title in titles :
-        for a in title.find_all('h2'):
+        for a in title.find_all('h3'):
             #print(a.text)
             for b in a.find_all('a'):
                 #print(b.get('href'))
                 lst.append([a.text.replace('\n',''),b.get('href')])
-    return lst
+    return lst[:10]
 
 #蘋果頭條前8
 def apple_news():
